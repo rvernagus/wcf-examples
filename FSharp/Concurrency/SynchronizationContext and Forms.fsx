@@ -49,5 +49,7 @@ proxy.IncrementLabel()
 proxy.IncrementLabel()
 proxy.IncrementLabel()
 
+
+Console.ReadLine()
 (proxy :?> ICommunicationObject).Close()
 host.Close()
