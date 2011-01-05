@@ -29,7 +29,7 @@ type Service() =
             printfn "No impersonation, running as %s" (whoami())
 
 
-let host = new ServiceHost(typeof<Service>, new Uri("net.tcp://localhost:8081"))
+let host = new ServiceHost(typeof<Service>, new Uri("net.tcp://localhost"))
 host.Open()
 
 let channelFactory = new ChannelFactory<IContract>(host.Description.Endpoints.[0])

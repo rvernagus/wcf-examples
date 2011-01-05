@@ -40,13 +40,12 @@ let password = Console.ReadLine()
 Console.Clear()
 
 channelFactory.Credentials.Windows.ClientCredential <- new NetworkCredential(name, password)
-channelFactory.Credentials.Windows.AllowedImpersonationLevel <- TokenImpersonationLevel.Delegation
+channelFactory.Credentials.Windows.AllowedImpersonationLevel <- TokenImpersonationLevel.Anonymous
 let proxy = channelFactory.CreateChannel()
 
 try
-    proxy.ImpersonatingOperation()
-    proxy.NonimpersonatingOperation()
+    proxy.NonimpersonatingOperation() // fails even when calling non-impersonation-required method
 with ex -> 
-    printfn "%s" ex.Message
+    printfn "ERROR: %s" ex.Message
     (proxy :?> ICommunicationObject).Abort()
     host.Close()
