@@ -29,7 +29,7 @@ type Service() =
             printfn "No impersonation, running as %s" (whoami())
 
 
-let host = new ServiceHost(typeof<Service>, new Uri("net.tcp://localhost:8081"))
+let host = new ServiceHost(typeof<Service>, new Uri("net.tcp://localhost"))
 host.Open()
 
 let channelFactory = new ChannelFactory<IContract>(host.Description.Endpoints.[0])
@@ -40,11 +40,12 @@ let password = Console.ReadLine()
 Console.Clear()
 
 channelFactory.Credentials.Windows.ClientCredential <- new NetworkCredential(name, password)
-channelFactory.Credentials.Windows.AllowedImpersonationLevel <- TokenImpersonationLevel.Anonymous
+channelFactory.Credentials.Windows.AllowedImpersonationLevel <- TokenImpersonationLevel.Delegation
 let proxy = channelFactory.CreateChannel()
 
 try
     proxy.ImpersonatingOperation()
+    proxy.NonimpersonatingOperation()
 with ex -> 
     printfn "%s" ex.Message
     (proxy :?> ICommunicationObject).Abort()
