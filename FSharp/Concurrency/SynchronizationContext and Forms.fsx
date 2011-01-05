@@ -49,7 +49,5 @@ proxy.IncrementLabel()
 proxy.IncrementLabel()
 proxy.IncrementLabel()
 
-printfn "Press any key to exit..."
-Console.ReadKey(true) |> ignore
 (proxy :?> ICommunicationObject).Close()
 host.Close()
