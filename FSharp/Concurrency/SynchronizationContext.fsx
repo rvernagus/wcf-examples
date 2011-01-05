@@ -15,7 +15,6 @@ type MySynchronizationContext() as this =
     member private this.DoWork() =
         let workEnum = workToDo.GetConsumingEnumerable()
         for item in workEnum do
-            Thread.Sleep(1) // why is this necessary?
             let d, state = item
             d.Invoke(state)
 
@@ -28,15 +27,23 @@ type MySynchronizationContext() as this =
 
 printfn "Main thread is #%d" Thread.CurrentThread.ManagedThreadId
 
-let doWork = new Action(fun _ ->
-    SynchronizationContext.Current.Send((fun _ ->
-        printfn "  Work done on Thread #%d" Thread.CurrentThread.ManagedThreadId), null))
+let doWork =
+    let rand = new Random()
+    let workPrint = new SendOrPostCallback(fun _ ->
+        printfn "  Work done on Thread #%d" Thread.CurrentThread.ManagedThreadId)
+    let workBody () = 
+        Thread.Sleep(rand.Next(0, 1000))
+        SynchronizationContext.Current.Send((workPrint), null)
+
+    fun _ -> new Action(workBody)
 
 let syncContext = new MySynchronizationContext()
 SynchronizationContext.SetSynchronizationContext(syncContext)
 
 let options = new ParallelOptions()
 options.TaskScheduler <- TaskScheduler.FromCurrentSynchronizationContext()
-Parallel.Invoke(options, Array.create 10 doWork)
+options.MaxDegreeOfParallelism <- Environment.ProcessorCount // Could not get example to work with TPL default
+let allWork = Array.init 10 doWork
+Parallel.Invoke(options, allWork)
 
 Console.ReadLine()
