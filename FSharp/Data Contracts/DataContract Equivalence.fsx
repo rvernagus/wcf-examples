@@ -1,8 +1,6 @@
 #load @"..\Common.fsx"
 open Common
-open System
 open System.Runtime.Serialization
-Console.Clear()
 
 
 [<DataContract(Name="Person", Namespace="")>]
