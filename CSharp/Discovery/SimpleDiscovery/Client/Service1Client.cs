@@ -1,4 +1,5 @@
 ﻿using System.ServiceModel;
+using System.ServiceModel.Channels;
 
 namespace Client
 {
@@ -8,7 +9,12 @@ namespace Client
             : base("clientEndpoint")
         {
         }
-            
+
+        public Service1Client(Binding binding, EndpointAddress remoteAddress)
+            : base(binding, remoteAddress)
+        {
+        }
+
         public bool DoWork()
         {
             return Channel.DoWork();
