@@ -8,19 +8,23 @@ open System.IdentityModel.Policy
 open System.ServiceModel
 open System.ServiceModel.Description
 open System.ServiceModel.Security
-Console.Clear()
 
 
 [<ServiceContract>]
-type IMyContract =
+type IEchoClaims =
     [<OperationContract>]
-    abstract MyOperation : unit -> unit
+    abstract Echo : unit -> string seq
 
 
-type MyService() =
-    interface IMyContract with
-        member this.MyOperation() =
-            printfn "MyOperation()"
+type EchoClaims() =
+    interface IEchoClaims with
+        member this.Echo() =
+            let result = new List<string>()
+            for claimSet in OperationContext.Current.ServiceSecurityContext.AuthorizationContext.ClaimSets do
+                for claim in claimSet do
+                    result.Add(sprintf "%s - %O - %s" claim.ClaimType claim.Resource claim.Right)
+
+            result :> string seq
 
 
 type MyCustomValidator() =
@@ -56,7 +60,7 @@ type MyCustomValidator() =
         member this.Issuer = ClaimSet.System
 
 
-let host = new ServiceHost(typeof<MyService>, new Uri("net.tcp://localhost:8081"))
+let host = new ServiceHost(typeof<EchoClaims>, new Uri("net.tcp://localhost"))
 
 // Add custom authorization policies here
 let policies = new List<IAuthorizationPolicy>()
@@ -65,9 +69,8 @@ host.Authorization.ExternalAuthorizationPolicies <- policies.AsReadOnly()
 
 host.Open()
 
-let mutable proxy = ChannelFactory<IMyContract>.CreateChannel(host.Description.Endpoints.[0].Binding, host.Description.Endpoints.[0].Address)
-proxy.MyOperation()
-proxy.MyOperation()
+let mutable proxy = ChannelFactory<IEchoClaims>.CreateChannel(host.Description.Endpoints.[0].Binding, host.Description.Endpoints.[0].Address)
+printfn "%A" <| proxy.Echo()
 
 (proxy :?> ICommunicationObject).Close()
 host.Close()
