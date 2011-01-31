@@ -1,8 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Service1", "Service1\Service1.csproj", "{87B5AC6D-4D1C-4236-8AEE-3D0730337530}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Client", "Client\Client.csproj", "{BDFE3C13-1CF0-4BB8-AA6E-23599D759CAC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RoutingService", "RoutingService\RoutingService.csproj", "{9E8599D7-B82A-4204-A1A6-B89BCEC6F0E3}"
@@ -19,16 +17,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{87B5AC6D-4D1C-4236-8AEE-3D0730337530}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{87B5AC6D-4D1C-4236-8AEE-3D0730337530}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{87B5AC6D-4D1C-4236-8AEE-3D0730337530}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{87B5AC6D-4D1C-4236-8AEE-3D0730337530}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{87B5AC6D-4D1C-4236-8AEE-3D0730337530}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{87B5AC6D-4D1C-4236-8AEE-3D0730337530}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{87B5AC6D-4D1C-4236-8AEE-3D0730337530}.Release|Any CPU.Build.0 = Release|Any CPU
-		{87B5AC6D-4D1C-4236-8AEE-3D0730337530}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{87B5AC6D-4D1C-4236-8AEE-3D0730337530}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{87B5AC6D-4D1C-4236-8AEE-3D0730337530}.Release|x86.ActiveCfg = Release|Any CPU
 		{BDFE3C13-1CF0-4BB8-AA6E-23599D759CAC}.Debug|Any CPU.ActiveCfg = Debug|x86
 		{BDFE3C13-1CF0-4BB8-AA6E-23599D759CAC}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
 		{BDFE3C13-1CF0-4BB8-AA6E-23599D759CAC}.Debug|Mixed Platforms.Build.0 = Debug|x86

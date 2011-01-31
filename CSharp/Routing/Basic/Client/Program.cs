@@ -10,12 +10,12 @@ namespace Client
     {
         static void Main(string[] args)
         {
-            var service1 = new Service1Client();
+            var service1 = new CalculatorService1Client();
             try
             {
                 service1.Open();
-                var result = service1.GetData(123);
-                Console.WriteLine(result);
+                var result = service1.Add(4, 3);
+                Console.WriteLine("{0} + {1} = {2}", 4, 3, result);
                 service1.Close();
             }
             catch (Exception)

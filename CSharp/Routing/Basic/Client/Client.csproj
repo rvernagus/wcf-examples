@@ -44,10 +44,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IService1Contract.cs" />
+    <Compile Include="ICalculatorService.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service1Client.cs" />
+    <Compile Include="CalculatorService1Client.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
