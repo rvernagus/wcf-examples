@@ -1,8 +1,8 @@
 ﻿namespace Service1
 {
-    public class Service : IContract
+    public class Service : IService1Contract
     {
-        #region IContract Members
+        #region IService1Contract Members
 
         public string GetData(int value)
         {

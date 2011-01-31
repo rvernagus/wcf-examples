@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace RoutingServer
+namespace CalculatorService1
 {
     class Program
     {
         static void Main(string[] args)
         {
+            using (var host = new ServiceHost(typeof()))
+            {
+                
+            }
         }
     }
 }
