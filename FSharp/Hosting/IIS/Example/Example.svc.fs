@@ -1,5 +1,4 @@
-﻿#light
-namespace IISHosting
+﻿namespace IISHosting
 open System.ServiceModel
 
 [<ServiceContract>]
