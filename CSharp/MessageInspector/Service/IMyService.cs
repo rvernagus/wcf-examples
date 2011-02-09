@@ -1,8 +1,9 @@
-﻿using System.ServiceModel;
+﻿using System.Net.Security;
+using System.ServiceModel;
 
 namespace MessageInspector
 {
-    [ServiceContract]
+    [ServiceContract(ProtectionLevel = ProtectionLevel.EncryptAndSign)]
     internal interface IMyService
     {
         [OperationContract]
