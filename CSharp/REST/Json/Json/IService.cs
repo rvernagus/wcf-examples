@@ -8,33 +8,22 @@ namespace REST.Json
     public interface IService
     {
         [OperationContract]
-        [WebGet]
+        [WebInvoke(Method = "GET", RequestFormat = WebMessageFormat.Json)]
         string GetData(int value);
 
         [OperationContract]
-        [WebInvoke(Method = "POST")]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        [WebInvoke(Method="GET", RequestFormat = WebMessageFormat.Json)]
+        CompositeType GetDataUsingDataContract(bool boolValue);
     }
 
 
     [DataContract]
     public class CompositeType
     {
-        private bool _boolValue = true;
-        private string _stringValue = "Hello ";
+        [DataMember]
+        public bool BoolValue { get; set; }
 
         [DataMember]
-        public bool BoolValue
-        {
-            get { return _boolValue; }
-            set { _boolValue = value; }
-        }
-
-        [DataMember]
-        public string StringValue
-        {
-            get { return _stringValue; }
-            set { _stringValue = value; }
-        }
+        public string StringValue { get; set; }
     }
 }

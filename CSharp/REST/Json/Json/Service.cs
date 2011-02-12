@@ -7,15 +7,16 @@ namespace REST.Json
     {
         public string GetData(int value)
         {
-            return string.Format("You entered: {0}", value);
+            return string.Format("Called GetData with {0}", value);
         }
 
-        public CompositeType GetDataUsingDataContract(CompositeType composite)
+        public CompositeType GetDataUsingDataContract(bool boolValue)
         {
-            if (composite == null)
-                throw new ArgumentNullException("composite");
-            if (composite.BoolValue)
-                composite.StringValue += "Suffix";
+            var composite = new CompositeType
+                                {
+                                    BoolValue = boolValue,
+                                    StringValue = boolValue.ToString()
+                                };
             return composite;
         }
     }
