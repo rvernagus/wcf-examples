@@ -2,10 +2,10 @@
 using System.ServiceModel;
 using System.ServiceModel.Web;
 
-namespace Service
+namespace REST.Json
 {
     [ServiceContract]
-    public interface IService1
+    public interface IService
     {
         [OperationContract]
         [WebGet]

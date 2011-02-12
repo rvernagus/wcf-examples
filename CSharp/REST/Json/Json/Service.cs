@@ -1,8 +1,9 @@
 ﻿using System;
 
-namespace Service
+namespace REST.Json
 {
-    public class Service1 : IService1
+
+    public class Service : IService
     {
         public string GetData(int value)
         {
