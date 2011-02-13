@@ -3,7 +3,6 @@ using System.ServiceModel;
 
 namespace Asynchronous.Client
 {
-
     [ServiceContract]
     internal interface IMyService
     {

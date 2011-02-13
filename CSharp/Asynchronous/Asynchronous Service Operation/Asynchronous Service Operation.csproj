@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{6AE7EE00-D2BB-4643-84A0-369FC914136E}</ProjectGuid>
+    <ProjectGuid>{6D1138EF-579D-4554-8D35-094A9DB8070A}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Asynchronous</RootNamespace>
-    <AssemblyName>Asychronous Client Invocation</AssemblyName>
+    <AssemblyName>Asynchronous Service Operation</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -49,6 +49,7 @@
     <Compile Include="Client\MyProxy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\MyAsyncResult.cs" />
     <Compile Include="Service\IMyService.cs" />
     <Compile Include="Service\MyService.cs" />
   </ItemGroup>

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Asynchronous.ClientSide.Service
+namespace Asynchronous.Service
 {
     class MyService : IMyService
     {

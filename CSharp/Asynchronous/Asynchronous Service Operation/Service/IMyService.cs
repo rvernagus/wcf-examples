@@ -1,9 +1,8 @@
 ﻿using System;
 using System.ServiceModel;
 
-namespace Asynchronous.Client
+namespace Asynchronous.Service
 {
-
     [ServiceContract]
     internal interface IMyService
     {
@@ -14,6 +13,6 @@ namespace Asynchronous.Client
         IAsyncResult BeginMakeCall(string data, AsyncCallback callback, object state);
 
         // Note: [OperationContract] not needed
-        void EndMakeCall(IAsyncResult result);
+        string EndMakeCall(IAsyncResult result);
     }
 }

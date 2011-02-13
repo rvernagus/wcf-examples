@@ -4,10 +4,10 @@ using System.ServiceModel.Channels;
 
 namespace Asynchronous.Client
 {
-    class MyProxy : ClientBase<IMyService>, IMyService
+    class MyProxy : DuplexClientBase<IMyService>, IMyService
     {
-        public MyProxy(Binding binding, string uri)
-            : base(binding, new EndpointAddress(uri))
+        public MyProxy(InstanceContext callbackInstance, Binding binding, string uri)
+            : base(callbackInstance, binding, new EndpointAddress(uri))
         {}
 
         public void MakeCall(string data)

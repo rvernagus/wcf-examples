@@ -1,6 +1,6 @@
 ﻿using System.ServiceModel;
 
-namespace Asynchronous.ClientSide.Service
+namespace Asynchronous.Service
 {
     [ServiceContract]
     internal interface IMyService
