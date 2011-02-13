@@ -3,16 +3,10 @@ using System.ServiceModel;
 
 namespace Asynchronous.Service
 {
-    [ServiceContract]
+    [ServiceContract(CallbackContract = typeof(IMyCallback), SessionMode = SessionMode.Required)]
     internal interface IMyService
     {
-        [OperationContract]
+        [OperationContract(IsOneWay = true)]
         void MakeCall(string data);
-
-        [OperationContract(AsyncPattern = true)]
-        IAsyncResult BeginMakeCall(string data, AsyncCallback callback, object state);
-
-        // Note: [OperationContract] not needed
-        string EndMakeCall(IAsyncResult result);
     }
 }
