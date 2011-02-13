@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{CA6C5441-DBED-407E-9354-EF8E1C2298B5}</ProjectGuid>
+    <ProjectGuid>{6AE7EE00-D2BB-4643-84A0-369FC914136E}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Asynchronous.ClientSide</RootNamespace>
-    <AssemblyName>Asynchronous</AssemblyName>
+    <AssemblyName>Asychronous Client Invocation</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -46,13 +46,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Client\IMyService.cs" />
-    <Compile Include="Service\MyService.cs" />
-    <Compile Include="Service\IMyService.cs" />
+    <Compile Include="Client\MyProxy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
+    <Compile Include="Service\IMyService.cs" />
+    <Compile Include="Service\MyService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,9 +4,9 @@ namespace Asynchronous.ClientSide.Service
 {
     class MyService : IMyService
     {
-        public void MakeCall()
+        public void MakeCall(string data)
         {
-            Console.WriteLine("Inside Call");
+            Console.WriteLine("Service: Call received (Data: {0})", data);
         }
     }
 }
