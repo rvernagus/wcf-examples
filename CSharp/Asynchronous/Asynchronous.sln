@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asychronous Client Invocation", "Asychronous Client Invocation\Asychronous Client Invocation.csproj", "{6AE7EE00-D2BB-4643-84A0-369FC914136E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asynchronous Service Operation", "Asynchronous Service Operation\Asynchronous Service Operation.csproj", "{6D1138EF-579D-4554-8D35-094A9DB8070A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "One-way with Callback", "One-way with Callback\One-way with Callback.csproj", "{6D1138EF-579D-4554-8D35-094A9DB8070A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Asynchronous Service Operation", "Asynchronous Service Operation\Asynchronous Service Operation.csproj", "{A8CD8AED-F0AA-4B42-8FFE-2273ACEFB109}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,6 +21,10 @@ Global
 		{6D1138EF-579D-4554-8D35-094A9DB8070A}.Debug|x86.Build.0 = Debug|x86
 		{6D1138EF-579D-4554-8D35-094A9DB8070A}.Release|x86.ActiveCfg = Release|x86
 		{6D1138EF-579D-4554-8D35-094A9DB8070A}.Release|x86.Build.0 = Release|x86
+		{A8CD8AED-F0AA-4B42-8FFE-2273ACEFB109}.Debug|x86.ActiveCfg = Debug|x86
+		{A8CD8AED-F0AA-4B42-8FFE-2273ACEFB109}.Debug|x86.Build.0 = Debug|x86
+		{A8CD8AED-F0AA-4B42-8FFE-2273ACEFB109}.Release|x86.ActiveCfg = Release|x86
+		{A8CD8AED-F0AA-4B42-8FFE-2273ACEFB109}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

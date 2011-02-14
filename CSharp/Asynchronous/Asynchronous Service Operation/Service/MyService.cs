@@ -1,17 +1,38 @@
 ﻿using System;
-using System.ServiceModel;
+using System.Threading;
 
 namespace Asynchronous.Service
 {
-    [ServiceBehavior(InstanceContextMode = InstanceContextMode.PerSession)]
     class MyService : IMyService
     {
-        public void MakeCall(string data)
+        public IAsyncResult BeginMakeCall(string data, AsyncCallback callback, object state)
         {
-            Console.WriteLine("Service: MakeCall (Data: {0})", data);
+            Console.WriteLine("Service: BeginMakeCall (Data: {0}, Thread: {1})", data, Thread.CurrentThread.ManagedThreadId);
+            Console.WriteLine("Service: Sleeping...");
+            Thread.Sleep(100);
+            return new CallAsyncResult<string>(data, callback, state);
+        }
 
-            var callback = OperationContext.Current.GetCallbackChannel<IMyCallback>();
-            callback.MakeCallComplete();
+        public void EndMakeCall(IAsyncResult result)
+        {
+            CallAsyncResult<string>.End(result);
+        }
+    }
+
+    internal class CallAsyncResult<T> : AsyncResult
+    {
+        public T Data { get; set; }
+
+        public CallAsyncResult(T data, AsyncCallback callback, object state)
+            : base(callback, state)
+        {
+            Data = data;
+        }
+
+        public static T End(IAsyncResult result)
+        {
+            var typedResult = End<TypedAsyncResult<T>>(result);
+            return typedResult.Data;
         }
     }
 }

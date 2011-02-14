@@ -18,11 +18,12 @@ namespace Asynchronous
             host.Open();
 
             // Client
-            var proxy = new MyProxy(binding, uri);
-            Console.WriteLine("Client: Making asynchronous call (Thread: {0})", Thread.CurrentThread.ManagedThreadId);
-            var result = proxy.BeginMakeCall("data", r => Console.WriteLine("Client: Callback made (State: {0}, Thread: {1})", r.AsyncState, Thread.CurrentThread.ManagedThreadId), "state");
+            var callback = new CallbackHandler();
+            var proxy = new MyProxy(callback, binding, uri);
+            Console.WriteLine("Client: Making one-way call");
+            proxy.MakeCall("data");
             Console.WriteLine("Client: Waiting for callback");
-            proxy.EndMakeCall(result);
+            Thread.Sleep(500);
             proxy.Close();
 
             host.Close();
