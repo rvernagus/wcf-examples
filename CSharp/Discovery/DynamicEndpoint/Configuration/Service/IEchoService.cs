@@ -1,11 +1,11 @@
 ﻿using System.ServiceModel;
 
-namespace Service
+namespace Discovery.Service
 {
     [ServiceContract]
-    public interface IService1
+    public interface IEchoService
     {
         [OperationContract]
-        bool DoWork();
+        string Echo(string text);
     }
 }
