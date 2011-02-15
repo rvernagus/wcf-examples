@@ -14,8 +14,8 @@ type IMyContract =
 
 type MyService() =
     interface IMyContract with
-        member this.Operation() =
-            printfn "  Operation()"
+        member this.Operation() = ()
+
 
 let ans = new AnnouncementService()
 ans.OnlineAnnouncementReceived.Add(fun e -> printfn "Received Online Announcement from <%A>" e.EndpointDiscoveryMetadata.Address)
