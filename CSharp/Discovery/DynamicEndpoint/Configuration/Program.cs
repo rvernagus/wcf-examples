@@ -16,26 +16,20 @@ namespace Discovery
             host.Open();
 
             // DynamicEndpoint
+
+            // ClientBase
             {
-                var contract = ContractDescription.GetContract(typeof(IEchoService));
-                var dynamicEndpoint = new DynamicEndpoint(contract, new NetTcpBinding());
-                var findCriteria = new FindCriteria { MaxResults = 1 };
-                dynamicEndpoint.FindCriteria = findCriteria;
+                var client = new EchoServiceClient("endpointConfiguration");
+                Console.WriteLine(client.Echo("ClientBase(DynamicEndpoint): Success!"));
+                ((ICommunicationObject)client).Close();
+            }
 
-                // ClientBase
-                {
-                    var client = new EchoServiceClient("endpointConfiguration");
-                    Console.WriteLine(client.Echo("ClientBase(DynamicEndpoint): Success!"));
-                    ((ICommunicationObject) client).Close();
-                }
-
-                // ChannelFactory
-                {
-                    var factory = new ChannelFactory<IEchoService>("endpointConfiguration");
-                    var channel = factory.CreateChannel();
-                    Console.WriteLine(channel.Echo("ChannelFactory(DynamicEndpoint): Success!"));
-                    ((ICommunicationObject) channel).Close();
-                }
+            // ChannelFactory
+            {
+                var factory = new ChannelFactory<IEchoService>("endpointConfiguration");
+                var channel = factory.CreateChannel();
+                Console.WriteLine(channel.Echo("ChannelFactory(DynamicEndpoint): Success!"));
+                ((ICommunicationObject)channel).Close();
             }
 
             host.Close();

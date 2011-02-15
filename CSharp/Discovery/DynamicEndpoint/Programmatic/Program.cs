@@ -12,10 +12,8 @@ namespace Discovery
     {
         private static void Main(string[] args)
         {
-            const string address = "net.tcp://localhost:4567";
-
             // Service
-            var host = new ServiceHost(typeof(Service.EchoService), new Uri(address));
+            var host = new ServiceHost(typeof(Service.EchoService), new Uri("net.tcp://localhost:4567"));
             host.Description.Behaviors.Add(new ServiceDiscoveryBehavior());
             host.AddDefaultEndpoints();
             host.AddServiceEndpoint(new UdpDiscoveryEndpoint());
