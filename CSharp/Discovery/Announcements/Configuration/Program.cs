@@ -44,7 +44,7 @@ namespace Discovery
 
         private static void OfflineAnnouncementReceived(object sender, AnnouncementEventArgs e)
         {
-            Console.WriteLine("Client: OfflineAnnouncementReceived  ({0})", e.EndpointDiscoveryMetadata.Address);
+            Console.WriteLine("Client:\tOfflineAnnouncementReceived ({0})", e.EndpointDiscoveryMetadata.Address);
         }
     }
 }
