@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Client\GeneratedClient.cs" />
     <Compile Include="Client\IMyService.cs" />
     <Compile Include="Client\MyProxy.cs" />
     <Compile Include="Program.cs" />
