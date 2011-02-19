@@ -1,11 +1,11 @@
 ﻿using System.ServiceModel;
 
-namespace Client
+namespace Routing
 {
     [ServiceContract]
-    public interface ICalculatorService
+    internal interface IEchoService
     {
         [OperationContract]
-        int Add(int number1, int number2);
+        string Echo(string text);
     }
 }
