@@ -3,9 +3,9 @@
 namespace Asynchronous.Client
 {
     [ServiceContract]
-    interface IMyCallback
+    interface IEchoCallback
     {
         [OperationContract(IsOneWay = true)]
-        void MakeCallComplete();
+        void EchoComplete(string data);
     }
 }

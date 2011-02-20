@@ -2,10 +2,9 @@
 
 namespace Asynchronous.Service
 {
-    //[ServiceContract] attribute not needed on callback
-    interface IMyCallback
+    interface IEchoCallback
     {
         [OperationContract(IsOneWay = true)]
-        void MakeCallComplete();
+        void EchoComplete(string data);
     }
 }

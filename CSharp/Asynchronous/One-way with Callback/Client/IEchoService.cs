@@ -3,10 +3,10 @@ using System.ServiceModel;
 
 namespace Asynchronous.Client
 {
-    [ServiceContract(CallbackContract = typeof(IMyCallback))]
-    internal interface IMyService
+    [ServiceContract(CallbackContract = typeof(IEchoCallback))]
+    internal interface IEchoService
     {
         [OperationContract(IsOneWay = true)]
-        void MakeCall(string data);
+        void Echo(string data);
     }
 }

@@ -1,12 +1,21 @@
 ﻿using System;
+using System.Threading;
 
 namespace Asynchronous.Client
 {
-    class CallbackHandler : IMyCallback
+    class CallbackHandler : IEchoCallback
     {
-        public void MakeCallComplete()
+        private readonly EventWaitHandle _callbackEvent;
+
+        public CallbackHandler(EventWaitHandle callbackEvent)
         {
-            Console.WriteLine("Client: MakeCallComplete");
+            _callbackEvent = callbackEvent;
+        }
+
+        public void EchoComplete(string data)
+        {
+            Console.WriteLine("Client: \tEchoComplete (Data: {0})", data);
+            _callbackEvent.Set();
         }
     }
 }

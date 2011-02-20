@@ -12,18 +12,17 @@ namespace Asynchronous
             const string uri = "net.pipe://localhost";
             var binding = new NetNamedPipeBinding();
 
-            // Service
-            var host = new ServiceHost(typeof(Service.MyService), new Uri(uri));
-            host.AddServiceEndpoint(typeof(Service.IMyService), binding, uri);
+            // Duplex Service
+            var host = new ServiceHost(typeof(Service.EchoService), new Uri(uri));
+            host.AddServiceEndpoint(typeof(Service.IEchoService), binding, uri);
             host.Open();
 
-            // Client
-            var callback = new CallbackHandler();
-            var proxy = new MyProxy(callback, binding, uri);
-            Console.WriteLine("Client: Making one-way call");
-            proxy.MakeCall("data");
-            Console.WriteLine("Client: Waiting for callback");
-            Thread.Sleep(500);
+            // Client with callback
+            var callbackEvent = new AutoResetEvent(false);
+            var callback = new CallbackHandler(callbackEvent);
+            var proxy = new EchoProxy(new InstanceContext(callback), binding, uri);
+            proxy.Echo("data");
+            callbackEvent.WaitOne();
             proxy.Close();
 
             host.Close();

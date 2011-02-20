@@ -3,9 +3,9 @@
 namespace Asynchronous.Service
 {
     [ServiceContract]
-    internal interface IMyService
+    internal interface IEchoService
     {
         [OperationContract]
-        void MakeCall(string data);
+        string Echo(string data);
     }
 }

@@ -8,22 +8,21 @@ namespace Asynchronous
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             const string uri = "net.pipe://localhost";
             var binding = new NetNamedPipeBinding();
 
-            // Service
-            var host = new ServiceHost(typeof(Service.MyService),new Uri(uri));
-            host.AddServiceEndpoint(typeof (Service.IMyService), binding, uri);
+            // Synchronous Service
+            var host = new ServiceHost(typeof(Service.EchoService),new Uri(uri));
+            host.AddServiceEndpoint(typeof (Service.IEchoService), binding, uri);
             host.Open();
 
-            // Client
-            var proxy = new MyProxy(binding, uri);
-            Console.WriteLine("Client: Making asynchronous call");
-            proxy.BeginMakeCall("data", r => Console.WriteLine("Client: Callback made (State: {0})", r.AsyncState), "state");
-            Console.WriteLine("Client: Waiting for callback");
-            Thread.Sleep(500);
+            // Asynchronous Client
+            var proxy = new EchoProxy(binding, uri);
+            var asyncResult = proxy.BeginEcho("data", r => Console.WriteLine("Client: \tAsyncCallback (State: {0})", r.AsyncState), "state");
+            var result = proxy.EndEcho(asyncResult);
+            Console.WriteLine("Client: \tResult = {0}", result);
             proxy.Close();
 
             host.Close();

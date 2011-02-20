@@ -45,17 +45,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Client\GeneratedClient.cs" />
-    <Compile Include="Client\IMyService.cs" />
-    <Compile Include="Client\MyProxy.cs" />
+    <Compile Include="Client\IEchoService.cs" />
+    <Compile Include="Client\EchoProxy.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Service\AsyncResult.cs" />
-    <Compile Include="Service\IMyService.cs" />
-    <Compile Include="Service\MyService.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
+    <Compile Include="Service\IEchoService.cs" />
+    <Compile Include="Service\EchoResult.cs" />
+    <Compile Include="Service\EchoService.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
