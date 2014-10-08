@@ -10,7 +10,7 @@ open System.ServiceModel.Dispatcher
 [<XmlSerializerFormat(Style = OperationFormatStyle.Rpc, Use = OperationFormatUse.Encoded)>]
 type ISomeLegacyService =
     [<OperationContract>]
-    abstract SomeOp1 : string -> unit
+    abstract SomeOp1: name: string -> unit
 
 
 [<PrintMessagesToConsole>]

@@ -1,4 +1,3 @@
-#light
 #r "System.Transactions"
 open System.Transactions
 

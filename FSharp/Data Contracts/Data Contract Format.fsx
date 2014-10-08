@@ -12,11 +12,11 @@ Console.Clear()
 type IContract =
     [<OperationContract>]
     [<DataContractFormat(Style = OperationFormatStyle.Rpc)>]
-    abstract RpcOperation : string -> string
+    abstract RpcOperation: name: string -> string
 
     [<OperationContract>]
     [<DataContractFormat(Style = OperationFormatStyle.Document)>]
-    abstract DocumentOperation : string -> string
+    abstract DocumentOperation: name: string -> string
 
 
 [<PrintMessagesToConsole>]

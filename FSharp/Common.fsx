@@ -1,3 +1,4 @@
+#r "System.Net.Http"
 #r "System.Runtime.Serialization"
 #r "System.ServiceModel"
 #r "System.Xml.Linq"
