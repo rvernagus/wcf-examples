@@ -1,3 +1,4 @@
+#r "System.Net.Http"
 #r "System.ServiceModel"
 #r "System.Runtime.Serialization"
 open System
@@ -35,10 +36,8 @@ host.Open()
 
 let proxy = ChannelFactory<IMyService>.CreateChannel(host.Description.Endpoints.[0].Binding, host.Description.Endpoints.[0].Address)
 
-let msg = proxy.GetData()
-let xdr = msg.GetReaderAtBodyContents()
-printfn "%O" <| xdr.ReadOuterXml()
-xdr.Close()
+proxy.GetData()
+|> printfn "%A\n"
 
 (proxy :?> ICommunicationObject).Close()
 host.Close()

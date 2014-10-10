@@ -1,3 +1,4 @@
+#r "System.Net.Http"
 #r "System.Runtime.Serialization"
 #r "System.ServiceModel"
 open System.IO
@@ -18,4 +19,5 @@ stream.Position <- 0L
 let reader = new StreamReader(stream)
 printfn "Message"
 printfn "  Status: %A" msg.State
-printfn "  Body Contents: %s" (reader.ReadToEnd())
+reader.ReadToEnd()
+|> printfn "  Body Contents: %s"
